@@ -1,0 +1,17 @@
+extends layout.jade
+block content
+    h1 Search Result
+    .row
+      .col-md-12
+        p We've found #{results.length} book/s with that name.
+      .col-md-8
+        table.table
+          thead
+            tr
+              th Books
+              th Price
+          tbody
+            each result in results
+              tr
+                td #{result.name}
+                td Rs. #{result.price}

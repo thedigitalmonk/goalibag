@@ -1,0 +1,9 @@
+extends layout.jade
+block content
+    h1 Edit Book Details
+    .row
+      .col-md-6
+        form(method = 'post' clas='form-group')
+          input(type='text', name = 'name' class='form-control' value = "#{listings.name}")
+          input(type='text', name = 'price' class='form-control' value = "#{listings.price}")
+          input(type='submit' class='btn btn-primary')

@@ -1,0 +1,30 @@
+extends layout.jade
+block content
+    h1 Hotels and Cottages in Alibag
+    .row
+      .col-md-4
+        form(action="/search" method ='post' class='form-inline')
+          .input-group
+            label(for="keyword")
+            input(type='text', name='keyword' class='form-control' placeholder = "Name of the Listing")
+            span.input-group-btn
+              input(type='submit' class='btn btn-primary' value='Search')
+    .row
+      .col-md-8
+        each listing in listings
+          .panel.panel-default
+            .panel-body
+              .media
+                .media-left
+                  a(href="/listing/#{$index}")
+                    img(src="http://placehold.it/240x240" class="media-object")
+                .media-body
+                  h4.media-heading #{listing.name}
+                  p Location: #{listing.location}
+                  ul
+                    each val in listing.features
+                      li=val
+                  p ₹#{listing.price}/-
+                  p
+                    a(href="/listing/#{$index}/edit" class="glyphicon glyphicon-edit")
+                    a(href="/listing/#{$index}/delete" class="glyphicon glyphicon-trash")

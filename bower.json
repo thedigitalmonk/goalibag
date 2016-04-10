@@ -1,0 +1,26 @@
+{
+  "name": "bookshop",
+  "description": "A bookshop for Life",
+  "main": "app.js",
+  "authors": [
+    "Thomson Muriyadan <hello@thedigitalmonk.in>"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "node",
+    "npm",
+    "express",
+    "jade",
+    "books"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

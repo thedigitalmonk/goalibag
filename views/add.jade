@@ -1,0 +1,9 @@
+extends layout.jade
+block content
+    h1 Add a new Book
+    .row
+      .col-md-4
+        form(action = '/listing', method = 'post' class="form-group")
+          input(type='text', name = 'name' class="form-control" placeholder ="Name" )
+          input(type='text', name = 'price' class="form-control" placeholder ="Price")
+          input(type='submit' class='btn btn-primary')
