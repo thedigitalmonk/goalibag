@@ -6,9 +6,26 @@ var Schema = mongoose.Schema;
 // create a schema
 var listingSchema = new Schema({
   name: String,
-  price: Number,
   location: String,
-  features: Array,
+  address: String,
+  distance: Number,
+  email: String,
+  contact: Number,
+  price: Number,
+  price_wknd: Number,
+  menu_type: String,
+  toilet_type: String,
+  hasFood: String,
+  hasWifi: Boolean,
+  hasAC: Boolean,
+  hasPickup: Boolean,
+  hasGuide: Boolean,
+  hasConference: Boolean,
+  hasEvent: Boolean,
+  hasAlcohol: Boolean,
+  special: String,
+  features: String,
+  image: String,
   created_at: Date,
   updated_at: Date
 });

@@ -1,5 +1,5 @@
 var listing = require('../models/Listing');
-
+var newListing;
 // listing.find({}, function(err, listings) {
 //   if (err) throw err;
 //   console.log(listings);
@@ -22,11 +22,17 @@ exports.addNewListing = function(req, res){
 };
 
 exports.getSingleListing = function(req, res){
-  var listing = listings[req.params.index];
-  res.render('single', {
-    pageTitle: 'Listing details',
-    listings: listings
+  listing.findById(req.params.id, function(err, listing){
+
+    if (err) throw err;
+
+    res.render('single', {
+      pageTitle: 'Listing details',
+      listing: listing
+    });
+
   });
+
 };
 
 exports.editListing = function(req, res){
@@ -37,24 +43,37 @@ exports.editListing = function(req, res){
 };
 
 exports.removeListing = function(req, res){
-  listing.findOne({'name': 'Shripad'}, function(err, listings) {
-    if (err) throw err;
-
-    //Remove this listing
-    listing.remove(function(err, removed) {
-      if (err) throw err;
-      console.log('Listing successfully deleted!');
-    });
-
-    //redirect to homepage
-    res.redirect('/listing');
-  });
+  listing.findById(req.params.id).remove().exec();
+  res.redirect('/listing');
 };
 
 exports.addListing =  function(req, res){
-  listings.push({
-    name:   req.body.name,
-    price:  req.body.price
+  newListing = new listing({
+    name: req.body.name,
+    price: req.body.price,
+    address: req.body.address,
+    email: req.body.email,
+    contact: req.body.contact,
+    price: req.body.price,
+    price_wknd: req.body.price_wknd,
+    menu_type: req.body.menu_type,
+    toilet_type: req.body.toilet_type,
+    hasFood: req.body.hasFood,
+    hasWifi: req.body.hasWifi,
+    hasAC: req.body.hasAC,
+    hasPickup: req.body.hasPickup,
+    hasGuide: req.body.hasGuide,
+    hasConference: req.body.hasConference,
+    hasEvent: req.body.hasEvent,
+    hasAlcohol: req.body.hasAlcohol,
+    special: req.body.special,
+    location: req.body.location,
+    features: req.body.features,
+    image: req.body.image,
+  });
+  newListing.save(function(err) {
+    if (err) throw err;
+    console.log('Listing saved successfully!');
   });
   res.redirect('/listing');
 };
@@ -74,3 +93,10 @@ exports.searchListing = function(req, res){
       results: Results
     });
 };
+
+exports.deleteAllListings = function(req, res) {
+  listing.remove({}, function(err, success){
+    if (err) throw err;
+    res.redirect("/listing");
+  });
+}

@@ -1,0 +1,92 @@
+.facilities {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    
+    
+    .li-container {
+      border: 1px solid #eee;
+    }
+    
+    li {
+        padding: 2px;
+    }
+    
+    li:nth-of-type(even) {
+      //background-color: #fbfbfb;  
+    }
+    
+    li span {
+        display: block;
+        text-align: center;
+        text-transform: capitalize;
+        
+        &[class*="icon-"]{
+            padding: 24px 0;
+            font-size: 24px;
+            transition: all 0.15s ease;
+            height: 72px;
+            &:hover {
+                font-size: 30px;
+            }
+        }
+        
+        &:nth-of-type(2) {
+          padding-bottom: 12px;
+        }
+    }
+}
+
+.special {
+    background-color: beige;
+    padding: 5px;
+    margin-top: 12px;
+}
+
+.media-body{
+    position: relative;
+}
+
+.media-heading{
+    position: relative;
+    top: 12px;
+}
+
+.location {
+    font-size: 14px;
+    padding: 12px 24px;
+    border-radius: 20px;
+    border: 1px solid #eee;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 17px;
+    background-color: #fff;
+    span[class*="icon-"] {
+        position: relative;
+        top: 2px;
+        right: 4px;
+    }
+}
+
+.contact-list {
+    list-style:none;
+    margin:0;
+    padding:0;
+    margin-top: 12px;
+    font-size: 16px;
+    span[class *="icon-"] {
+        margin-right: 6px;
+        position: relative;
+        top: 2px;
+    }
+}
+
+.price {
+    background-color: #f1c40f;
+    background-image: none;
+    border: none;
+    text-shadow: none;
+    padding: 12px 24px;
+}
+

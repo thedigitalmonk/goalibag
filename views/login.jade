@@ -1,0 +1,7 @@
+extends layout.jade
+block content
+    h1 Login to Goalibag
+    form(class="form" aciton="/login" method="post")
+        input(type='email' name='email' class='form-control' placeholder='email' required)
+        input(type='password' name='password' class='form-control' placeholder='password' required)
+        input(type='submit' name='Login' class='btn btn-default')

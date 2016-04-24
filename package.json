@@ -11,16 +11,19 @@
     "npm",
     "express",
     "jade",
-    "books"
+    "listing"
   ],
   "author": "Thomson Muriyadan <hello@thedigitalmonk.in>",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.14.1",
-    "mongoose"   : "~3.6.2",
-    "morgan"     : "~1.6.1",
+    "csvtojson": "^0.5.3",
     "express": "^4.13.3",
     "jade": "^1.11.0",
-    "method-override": "~2.3.5"
+    "method-override": "~2.3.5",
+    "mongoose": "~3.6.2",
+    "morgan": "~1.6.1",
+    "multer": "^1.1.0",
+    "upload-file": "^1.2.0"
   }
 }

@@ -1,9 +1,78 @@
 extends layout.jade
 block content
-    h1 Add a new Book
+    h1 Add a new Cottage
     .row
-      .col-md-4
-        form(action = '/listing', method = 'post' class="form-group")
+      .col-md-8
+        form(action = '/listing', method = 'post')
           input(type='text', name = 'name' class="form-control" placeholder ="Name" )
-          input(type='text', name = 'price' class="form-control" placeholder ="Price")
+          input(type='text', name = 'location' class="form-control" placeholder ="Location")
+          textarea(name = 'address' class="form-control" placeholder ="Address")
+          input(type='email', name = 'email' class="form-control" placeholder ="Email")
+          input(type='number', name = 'contact' class="form-control" placeholder ="Contact no.")
+          input(type='number', name = 'price' class="form-control" placeholder ="Price")
+          input(type='number', name = 'price_wknd' class="form-control" placeholder ="Price for Weekend (if applicable)")
+          .form-group
+            label.col-sm-4 Toilet Type:
+            .col-sm-8
+              select(name="menu_type" class="form-control")
+                option(value="Western") Western
+                option(value="India") Indian
+                option(value="Both") Both
+          .form-group
+            label.col-sm-4 Menu Type:
+            .col-sm-8
+              select(name="menu_type" class="form-control")
+                option Veg
+                option Non-veg
+          .form-group
+            label.col-sm-4 Food Available:
+            .col-sm-8
+              select(name="hasFood" class="form-control")
+                option(value="true") Yes
+                option(value="false") No
+          .form-group
+            label.col-sm-4 Wifi Available:
+            .col-sm-8
+              select(name="hasWifi" class="form-control")
+                option(value="true") Yes
+                option(value="false") No
+          .form-group
+            label.col-sm-4 AC room Available:
+            .col-sm-8
+              select(name="hasAC" class="form-control")
+                option(value="true") Yes
+                option(value="false") No
+          .form-group
+            label.col-sm-4 Pickup Available:
+            .col-sm-8
+              select(name="hasPickup" class="form-control")
+                option(value="true") Yes
+                option(value="false") No
+          .form-group
+            label.col-sm-4 Guide Available:
+            .col-sm-8
+              select(name="hasGuide" class="form-control")
+                option(value="true") Yes
+                option(value="false") No
+          .form-group
+            label.col-sm-4 Conference room Available:
+            .col-sm-8
+              select(name="hasConference" class="form-control")
+                option(value="true") Yes
+                option(value="false") No
+          .form-group
+            label.col-sm-4 Event facility?:
+            .col-sm-8
+              select(name="hasEvent" class="form-control")
+                option(value="true") Yes
+                option(value="false") No
+          .form-group
+            label.col-sm-4 Alcohol available:
+            .col-sm-8
+              select(name="hasAlcohol" class="form-control")
+                option(value="true") Yes
+                option(value="false") No
+          input(type='text', name = 'special' class="form-control" placeholder ="Speciality")
+          input(type='text', name = 'features' class="form-control" placeholder ="Other features")
+          input(type='text', name = 'image' class="form-control" placeholder ="link to image")
           input(type='submit' class='btn btn-primary')

@@ -1,0 +1,5 @@
+name,location,distance,address,email,contact,price,price_wknd,menu_type,toilet_type,hasFood,hasWifi,hasAC,hasPickup,hasGuide,hasConference,hasEvent,hasAlcohol,feature,special,image
+Tejasvi Cottage,Kurul,4,,,7798889308,1200,1200,veg,indian,true,false,true,false,false,false,false,true,Akshi Beach,Village style rooms,http://placehold.it/240x240
+Shlok Cottage ,Varsoli,1,,,9823571651,1500,1500,na,indian,false,false,true,false,false,false,false,true,Varsoli Beach,Dinner in Wadi,http://placehold.it/240x240
+Vardayini Guest House,Varsoli,1,,,9960991252,2300,2300,non-veg,western,true,true,true,true,false,true,true,true,Varsoli Beach,"Cottage in Wadi, Varsoli Beach",http://placehold.it/240x240
+Sugoy guest house (Bunglow on rent),Aakshi,5,,,9822090599,4000,4000,veg,western,true,false,false,true,false,false,true,true,Aakshi Beach,Independent renting,http://placehold.it/240x240
