@@ -1,5 +1,6 @@
 var listing = require('../models/Listing');
 var newListing;
+var session;
 // listing.find({}, function(err, listings) {
 //   if (err) throw err;
 //   console.log(listings);
@@ -8,6 +9,10 @@ var newListing;
 //console.log(listings);
 
 exports.getListings = function(req, res){
+  
+  if(req.session.user) loggedIn = true;
+  if(!req.session.user) loggedIn = false;
+  
   listing.find({}, function(err, listings) {
     if (err) throw err;
     res.render('list',{
@@ -36,10 +41,14 @@ exports.getSingleListing = function(req, res){
 };
 
 exports.editListing = function(req, res){
-  var listing = listings[req.params.index];
-  res.render('edit', {
-    listings : listings
+  listing.findById(req.params.id, function(err, listing) {
+    if (err) throw err;
+    res.render('edit', {
+      pageTitle: 'Edit Listing',
+      listing : listing
+    });  
   });
+  
 };
 
 exports.removeListing = function(req, res){
@@ -69,7 +78,7 @@ exports.addListing =  function(req, res){
     special: req.body.special,
     location: req.body.location,
     features: req.body.features,
-    image: req.body.image,
+    image: req.body.image
   });
   newListing.save(function(err) {
     if (err) throw err;

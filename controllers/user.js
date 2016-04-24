@@ -22,7 +22,14 @@ exports.loginUser = function (req, res) {
         function(err, user) {
             if(err) throw err;
             if(!user) return res.status(404).send();
+            req.session.user = user;
             return res.status(200).send();
+            res.redirect('/');
         }
     );
+}
+
+exports.logout = function(req, res) {
+    req.session.destroy();
+    res.redirect('/');
 }

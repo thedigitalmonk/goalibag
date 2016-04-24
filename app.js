@@ -4,6 +4,7 @@ var mongoose = require('mongoose');              // mongoose for mongodb
 var morgan   = require('morgan');
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var database = require('./config/database');
+var session = require('express-session');
 
 // configuration ===============================================================
 mongoose.connect(database.url);     // connect to mongoDB database on modulus.io
@@ -17,6 +18,11 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse applica
 app.use(methodOverride());
 app.set('views',__dirname+"/views");
 app.set('view engine','jade');
+app.use(session({
+  secret: "shblsizuvibvaidsbvo", 
+  resave: false,
+  saveUninitialized: true
+}));
 
 
 // routes ======================================================================

@@ -9,11 +9,20 @@ nav.navbar.navbar-default
         span.icon-bar
       a.navbar-brand(href='/') Goalibag
     // Collect the nav links, forms, and other content for toggling
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+    .collapse.navbar-collapse
       ul.nav.navbar-nav
         li
           a(href='/listing') Show All Listings
-        li
-          a(href='/listing/new') Add Listing
-        li
-          a(href='/upload') Update Database
+        if loggedIn
+          li
+            a(href='/listing/new') Add Listing
+          li
+            a(href='/upload') Update Database
+          li
+            a(href='/logout') Logout
+        else
+          li(class="pull-right")
+            a(href='/login') Login
+          li(class="pull-right") 
+            a(href='/register') Register
+          
