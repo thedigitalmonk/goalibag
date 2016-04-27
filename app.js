@@ -19,7 +19,7 @@ app.use(methodOverride());
 app.set('views',__dirname+"/views");
 app.set('view engine','jade');
 app.use(session({
-  secret: "shblsizuvibvaidsbvo", 
+  secret: "shblsizuvibvaidsbvo",
   resave: false,
   saveUninitialized: true
 }));
@@ -28,6 +28,6 @@ app.use(session({
 // routes ======================================================================
 require('./routes.js')(app);
 
-app.listen(5000, function(){
-  console.log("Express Server at port 5000");
+app.listen(80, function(){
+  console.log("Express Server at port 80");
 });
