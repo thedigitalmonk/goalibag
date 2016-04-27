@@ -11,8 +11,6 @@ nav.navbar.navbar-default
     // Collect the nav links, forms, and other content for toggling
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li
-          a(href='/listing') Show All Listings
         if loggedIn
           li
             a(href='/listing/new') Add Listing
@@ -23,6 +21,5 @@ nav.navbar.navbar-default
         else
           li(class="pull-right")
             a(href='/login') Login
-          li(class="pull-right") 
+          li(class="pull-right")
             a(href='/register') Register
-          

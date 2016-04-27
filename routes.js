@@ -2,11 +2,14 @@ var listController = require('./controllers/listing');
 var csvController = require('./controllers/csv');
 var userController = require('./controllers/user');
 var listings = require('./models/Listing');
+var homeController = require('./controllers/home');
 
 // expose the routes to our app with module.exports
 module.exports = function(app) {
 
-  app.get('/', listController.getListings);
+  app.get('/', homeController.workInProgress);
+
+  //app.get('/', listController.getListings);
 
   app.get('/listing', listController.getListings);
 
@@ -39,7 +42,7 @@ module.exports = function(app) {
 
   app.post('/login', userController.loginUser);
 
-  app.post('/register', userController.addUser);
+  app.post('/register', loggedIn, userController.addUser);
 
   app.get('/logout', userController.logout);
 

@@ -86,7 +86,7 @@ block content
                   p(class="special") #[strong Special mention:] #{listing.special}
 
 
-                  button.price.btn.btn-default Show Prices
+                  p(class="prices") ROOM TARIFF: ₹#{listing.price}/-
                     
                    if (listing.price != listing.price_wknd)
                      p *Weekend tariff is ₹#{listing.price_wknd}/-

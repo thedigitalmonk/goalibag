@@ -1,10 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Muli:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 body,
 h1,
 h2,
 h3,
 h4 {
-  font-family: 'Muli', 'Arial' , 'Helvetica', sans-serif; }
+  font-family: 'Open Sans', 'Arial' , 'Helvetica', sans-serif; }
 
 body {
   font-size: 12px;
@@ -1936,9 +1936,6 @@ strong, b {
     position: relative;
     top: 2px; }
 
-.price {
-  background-color: #f1c40f;
-  background-image: none;
-  border: none;
-  text-shadow: none;
-  padding: 12px 24px; }
+.prices {
+  font-weight: 700;
+  font-size: 16px; }
