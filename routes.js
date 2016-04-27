@@ -32,23 +32,23 @@ module.exports = function(app) {
   app.get('/deleteAllListings', listController.deleteAllListings);
 
   app.post('/csv/upload', csvController.csvUpload);
-  
-  app.get('/register', loggedIn, function(req, res) { res.render('register'); });
-  
+
+  app.get('/register', function(req, res) { res.render('register'); });
+
   app.get('/login', function(req, res) { res.render('login'); });
-  
-  app.post('/login', userController.loginUser); 
-  
+
+  app.post('/login', userController.loginUser);
+
   app.post('/register', userController.addUser);
-  
+
   app.get('/logout', userController.logout);
 
 }
 
 function loggedIn(req, res, next) {
   if(req.session.user) {
-    next();  
+    next();
   } else {
-    res.redirect('/login');   
+    res.redirect('/login');
   }
 }
