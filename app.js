@@ -27,6 +27,6 @@ app.use(session({
 // routes ======================================================================
 require('./routes.js')(app);
 
-app.listen(4000, function(){
-  console.log("Express Server at port 4000");
+app.listen(80, function(){
+  console.log("Express Server at port 80");
 });
