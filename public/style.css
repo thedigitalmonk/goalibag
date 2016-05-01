@@ -1,11 +1,13 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 body,
 h1,
 h2,
 h3,
 h4,
 h5 {
-  font-family: 'Open Sans', 'Arial' , 'Helvetica', sans-serif; }
+  font-family: 'Helvetica' , 'Helvetica', sans-serif; }
+
+h1, h2, h3 {
+  font-weight: 700; }
 
 body {
   font-size: 12px;
@@ -1885,7 +1887,7 @@ address {
   padding: 0;
   list-style: none; }
   .facilities .li-container {
-    border: 1px solid #eee; }
+    border: 1px solid #eeeeee; }
   .facilities li {
     padding: 2px; }
   .facilities li span {
@@ -1914,17 +1916,17 @@ address {
   position: relative;
   top: 12px; }
 
-.location {
+.single .location {
   font-size: 14px;
   padding: 12px 24px;
   border-radius: 20px;
-  border: 1px solid #eee;
   display: inline-block;
   position: absolute;
   right: 0;
   top: 17px;
-  background-color: #fff; }
-  .location span[class*="icon-"] {
+  background-color: #fff;
+  border: 1px solid #eeeeee; }
+  .single .location span[class*="icon-"] {
     position: relative;
     top: 2px;
     right: 4px; }
@@ -1941,8 +1943,8 @@ address {
     top: 2px; }
   .contact-list li {
     padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 10px; }
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eeeeee; }
 
 .prices .regular-price {
   font-weight: 700;
@@ -1953,6 +1955,54 @@ address {
 .search-container {
   padding: 15px;
   background-color: #f5f5f5; }
+
+.listing-tile {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #eeeeee; }
+  .listing-tile a:hover {
+    text-decoration: none; }
+  .listing-tile h4 {
+    color: #333333;
+    font-size: 16px;
+    line-height: 1.4; }
+  .listing-tile .location {
+    font-size: 14px; }
+  .listing-tile img {
+    width: 100%; }
+  .listing-tile span[class*="icon-"] {
+    margin-right: 5px;
+    position: relative;
+    top: 2px; }
+
+.listing-details {
+  padding: 10px 15px 10px; }
+
+.banner {
+  position: relative;
+  height: 244px;
+  background-image: url("uploads/ga_bg2x.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 -300px; }
+  .banner h1 {
+    position: absolute;
+    bottom: 15px;
+    left: 30px;
+    color: #fff;
+    text-shadow: 1px 1px 5px #333333; }
+
+.img-container {
+  height: 251px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  border-bottom: 1px solid #eeeeee; }
+  .img-container img {
+    width: 100%; }
+
+.description {
+  max-width: 300px; }
 
 .bg {
   padding: 15px; }

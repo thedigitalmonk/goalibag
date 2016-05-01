@@ -1,0 +1,6 @@
+@mixin border-bottom {
+  border-bottom: 1px solid $light-gray;
+}
+@mixin border-all {
+  border: 1px solid $light-gray;
+}

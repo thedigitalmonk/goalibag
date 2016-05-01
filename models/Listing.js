@@ -27,6 +27,9 @@ var listingSchema = new Schema({
   description: String,
   attractions: String,
   image: String,
+  status: String,
+  join_date: Date,
+  last_renew: Date,
   created_at: Date,
   updated_at: Date
 });

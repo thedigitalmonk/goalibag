@@ -1,10 +1,10 @@
 var listing = require('../models/Listing');
 var newListing;
 var session;
-
+var moment = require('moment');
 exports.getListings = function(req, res){
 
-  listing.find({}, function(err, listings) {
+  listing.find({status: 'active'}, function(err, listings) {
     if (err) throw err;
     res.render('list',{
       pageTitle: 'Alibag hotels and cottages',
@@ -66,7 +66,8 @@ exports.addListing =  function(req, res){
     location: req.body.location,
     description: req.body.description,
     attractions: req.body.attractions,
-    image: req.body.image
+    image: req.body.image,
+    status: req.body.status
   });
   newListing.save(function(err) {
     if (err) throw err;
@@ -100,7 +101,8 @@ exports.updateListing = function(req, res){
       listing.location = req.body.location,
       listing.description = req.body.description,
       listing.attractions = req.body.attractions,
-      listing.image = req.body.image
+      listing.image = req.body.image,
+      listing.status = req.body.status
 
       listing.save(function(err) {
         if (err) throw err;
@@ -120,23 +122,35 @@ exports.searchListing = function(req, res){
     var budget = req.body.budget.split("-");
     var query = {
       location: req.body.location,
-      hasAC: req.body.hasAC,
-      hasWifi: req.body.hasWifi,
-      menu_type: req.body.menu_type
+      status: 'active'
     }
-    var querylog = JSON.stringify(query, null, 4);
+    //var querylog = JSON.stringify(query, null, 4);
     listing.find(query).
     where('price').gt(budget[0]).lt(budget[1]).
     exec(function(err, listings) {
       if(err) throw err;
       res.render('results', {
         listings : listings,
-        query: querylog
+        query: query
       });
     });
 };
 
-
+exports.searchListingByLocation = function(req, res){
+    var query = {
+      location: req.params.location,
+      status: 'active'
+    }
+    //var querylog = JSON.stringify(query, null, 4);
+    listing.find(query).
+    exec(function(err, listings) {
+      if(err) throw err;
+      res.render('results', {
+        listings : listings,
+        query: query
+      });
+    });
+};
 
 
 

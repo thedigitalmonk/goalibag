@@ -2,16 +2,35 @@ extends layout.jade
 block content
     if message
       p(class="bg bg-success")!=message
-    h1 Update Database
+    h1 GoAlibag Database
     .row
-      .col-md-8
+      .col-md-12
+        if listings
+          p Total no. of listings: #{Object.keys(listings).length}
+          table.table
+            tr
+              th #
+              th Name
+              th Location
+              th Join Date
+              th Last renewal
+              th Ends on
+              th Status
+            each listing,index in listings
+              tr
+                td #{index+1}
+                td #[a(href="/listing/#{listing._id}/edit") #{listing.name}]
+                td #{listing.location}
+                td #{moment(listing.join_date).format('DD-MM-YYYY')}
+                td #{moment(listing.last_renew).format('DD-MM-YYYY')}
+                td #{moment(listing.last_renew).add(30, 'days').format('DD-MM-YYYY')}
+                td #{listing.status}
+        hr
+
+      .col-md-12
         .col-md-6
-          p Before uploading delete all listings using this link
-          if count
-            p Total no. of listings: #{count}
-          p
-            a(href="/deleteAllListings" class="btn btn-default") Delete listings
+          a(href="/deleteAllListings" class="btn btn-default") Delete All listings
         .col-md-6
-          form(action = '/upload', method = 'post' enctype='multipart/form-data')
-            input(type="file" name="database" required)
-            input(type='submit' class='btn btn-primary')
+          form(action='/upload', method = 'post' enctype='multipart/form-data' class="form-inline")
+            input(type="file" name="database" class="form-control" required)
+            input(type='submit' class='btn btn-primary' value="Add Listings")

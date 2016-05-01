@@ -34,7 +34,7 @@ block content
             label Menu Type:
             select(name="menu_type" class="form-control")
               option(value="veg") Veg
-              option(value="non-veg") Non-veg
+              option(value="non-veg and veg") Non-veg and Veg
               option(value="na") Not applicable
           p Please tick if available
           .checkbox
@@ -81,5 +81,15 @@ block content
           .form-group
             label Link to image
             input(type='text', name = 'image' class="form-control" placeholder ="http://link-to-image.com")
-
+          .form-group
+            label Join Date
+            input(type='date', name = 'join_date' class="form-control")
+          .form-group
+            label Renewal Date
+            input(type='date', name = 'last_renew' class="form-control")
+          .form-group
+            label Status
+            select(name="status" class="form-control")
+              option(value="active") Active
+              option(value="inactive") Inactive
           input(type='submit' value="Add Listing" class='btn btn-primary')

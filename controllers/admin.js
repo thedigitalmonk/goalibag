@@ -15,9 +15,11 @@ var upload = multer({ storage : storage}).single('database');
 var newListing;
 
 exports.getDashboard = function(req, res) {
-  listing.count({}, function( err, count){
-    res.render('dashboard', {
-      count : count
+  listing.find({}, function(err, listings) {
+    if (err) throw err;
+    res.render('dashboard',{
+      pageTitle: 'Alibag hotels and cottages',
+      listings: listings
     });
   });
 }

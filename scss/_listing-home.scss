@@ -5,7 +5,7 @@
 
 
     .li-container {
-      border: 1px solid #eee;
+      @include border-all;
     }
 
     li {
@@ -52,16 +52,16 @@
     top: 12px;
 }
 
-.location {
+.single .location {
     font-size: 14px;
     padding: 12px 24px;
     border-radius: 20px;
-    border: 1px solid #eee;
     display: inline-block;
     position: absolute;
     right: 0;
     top: 17px;
     background-color: #fff;
+    @include border-all;
     span[class*="icon-"] {
         position: relative;
         top: 2px;
@@ -83,8 +83,8 @@
 
     li {
       padding-bottom: 10px;
-      border-bottom: 1px solid #eee;
       margin-bottom: 10px;
+      @include border-bottom;
     }
 }
 
@@ -101,4 +101,64 @@
 .search-container {
   padding: 15px;
   background-color: #f5f5f5;
+}
+
+.listing-tile {
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+  @include border-all;
+  a:hover {
+    text-decoration: none;
+  }
+  h4 {
+    color: $black;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  .location {
+    font-size: 14px;
+  }
+  img {
+    width: 100%;
+  }
+  span[class*="icon-"] {
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+  }
+
+}
+.listing-details {
+  padding: 10px 15px 10px;
+}
+
+.banner {
+  position: relative;
+  height: 244px;
+  background-image: url('uploads/ga_bg2x.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0 -300px;
+  h1 {
+    position: absolute;
+    bottom: 15px;
+    left: 30px;
+    color: #fff;
+    text-shadow: 1px 1px 5px $black;
+  }
+}
+
+.img-container {
+  height: 251px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+  @include border-bottom;
+  img {
+    width: 100%;
+  }
+}
+
+.description {
+  max-width: 300px;
 }

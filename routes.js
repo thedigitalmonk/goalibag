@@ -25,6 +25,8 @@ module.exports = function(app) {
 
   app.post('/search', listController.searchListing);
 
+  app.post('/search/:location', listController.searchListingByLocation);
+
 
 
   //Admin

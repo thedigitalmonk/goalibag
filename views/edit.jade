@@ -34,7 +34,7 @@ block content
             label Menu Type:
             select(name="menu_type" class="form-control")
               option(value="veg" selected=listing.menu_type === "veg") Veg
-              option(value="non-veg" selected=listing.menu_type === "non-veg") Non-veg
+              option(value="non-veg" selected=listing.menu_type === "non-veg and veg") Non-veg and veg
               option(value="na" selected=listing.menu_type === "na") Not Applicable
           .checkbox
             label
@@ -80,5 +80,16 @@ block content
           .form-group
             label Link to image
             input(type='text', name = 'image' class="form-control" placeholder ="link to image" value="#{listing.image}")
+          .form-group
+            label Join Date
+            input(type='text', name = 'join_date' class="form-control" value="#{moment(listing.join_date).format('DD/MM/YYYY')}")
+          .form-group
+            label Last Renewal Date
+            input(type='text', name = 'last_renew' class="form-control" value="#{moment(listing.last_renew).format('DD/MM/YYYY')}")
+          .form-group
+            label Status
+            select(name="status" class="form-control")
+              option(value="active" selected=listing.status === "active") Active
+              option(value="inactive" selected=listing.status === "inactive") Inactive
 
           input(type='submit' name="Update" class='btn btn-primary' value="Update Listing")

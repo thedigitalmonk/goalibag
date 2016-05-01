@@ -22,6 +22,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }));
+app.locals.moment = require('moment');
 
 
 // routes ======================================================================
