@@ -1,17 +1,104 @@
 extends layout.jade
 block content
-    h1 Search Result
+    h1 Results
+    p!= message
+
     .row
-      .col-md-12
-        p We've found #{results.length} book/s with that name.
-      .col-md-8
-        table.table
-          thead
-            tr
-              th Books
-              th Price
-          tbody
-            each result in results
-              tr
-                td #{result.name}
-                td Rs. #{result.price}
+      .col-md-3
+        h4 later
+
+
+      .col-md-9
+        p!=query
+        if listings == 0
+          p Sorry, we couldn't find any cottages that match your criteria.
+        if listings != 0
+          each listing in listings
+            .panel.panel-default
+              .panel-body
+                .media
+                  .media-left
+                    a(href="/listing/#{listing._id}")
+                      img(src="#{listing.image}" class="media-object" width="240" height="240")
+                    ul(class="contact-list")
+                      if listing.email
+                        li
+                          span(class="icon-chat-messages-15")
+                          span #{listing.email}
+                      if listing.contact
+                        li
+                          span(class="icon-seo-icons-23")
+                          span #{listing.contact}
+                      if listing.offer
+                        p #{listing.offer}
+                      if loggedIn
+                        p #[a(href="/listing/#{listing._id}/edit" class="btn btn-primary") #[span(class="glyphicon glyphicon-edit")] Edit] #[a(href="/listing/#{listing._id}/delete" class="btn btn-default") #[span(class="glyphicon glyphicon-trash")] Remove]
+
+                  .media-body
+                    h4.media-heading #{listing.name}
+                    .location
+                      span(class="icon-seo-icons-34")
+                      span #[strong Location:] #{listing.location}
+                    hr
+                    if listing.address
+                      address Full Address: #{listing.address}
+                    if listing.description
+                      p #{listing.description}
+                      hr
+                    h4 Facilities
+                    ul(class="row facilities")
+                      if listing.hasAC
+                        li(class="col-md-3")
+                          .li-container
+                            span(class="icon-weather-14")
+                            span AC rooms
+                      if listing.hasWifi
+                        li(class="col-md-3")
+                          .li-container
+                            span(class="icon-socialmedia-20")
+                            span Wifi
+                      if listing.hasFood=="true"
+                        li(class="col-md-3")
+                          .li-container
+                            span(class="icon-food-16")
+                            span #{listing.menu_type} food
+                      if listing.hasPickup
+                        li(class="col-md-3")
+                          .li-container
+                            span(class="icon-travel-transportation-09")
+                            span Pickup
+                      if listing.hasGuide
+                        li(class="col-md-3")
+                          .li-container
+                            span(class="icon-faces-users-04")
+                            span City Guide
+                      if listing.hasConference
+                        li(class="col-md-3")
+                          .li-container
+                            span(class="icon-multimedia-12")
+                            span Conference
+                      if listing.hasEvent
+                        li(class="col-md-3")
+                          .li-container
+                            span(class="icon-party-01")
+                            span Events
+                      if listing.hasAlcohol
+                        li(class="col-md-3")
+                          .li-container
+                            span(class="icon-food-12")
+                            span Alcohol
+                      if listing.toilet_type
+                        li(class="col-md-3")
+                          .li-container
+                            span(class="icon-shopping-21")
+                            span #{listing.toilet_type} Toilets
+
+                    p(class="special") #[strong Special mention:] #{listing.special}
+                    p Attractions nearby: #{listing.attractions}
+
+                    hr
+
+                    p(class="prices")
+                      span(class="regular-price") Room Tariff: ₹#{listing.price}/-
+                      if(listing.price != listing.price_wknd)
+                        span(class="weekend-price") *Weekend tariff is ₹#{listing.price_wknd}/-

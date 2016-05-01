@@ -1,17 +1,15 @@
 var listController = require('./controllers/listing');
-var csvController = require('./controllers/csv');
+var adminController = require('./controllers/admin');
 var userController = require('./controllers/user');
 var listings = require('./models/Listing');
-var homeController = require('./controllers/home');
+var loggedIn;
 
 // expose the routes to our app with module.exports
 module.exports = function(app) {
 
-  app.get('/', homeController.workInProgress);
+  //app.get('/', homeController.workInProgress);
 
-  //app.get('/', listController.getListings);
-
-  app.get('/listing', listController.getListings);
+  app.get('/', listController.getListings);
 
   app.get('/listing/new', loggedIn, listController.addNewListing);
 
@@ -30,11 +28,13 @@ module.exports = function(app) {
 
 
   //Admin
-  app.get('/upload', loggedIn, csvController.addCsv);
+  app.get('/dashboard', loggedIn, adminController.getDashboard);
 
   app.get('/deleteAllListings', listController.deleteAllListings);
 
-  app.post('/csv/upload', csvController.csvUpload);
+  app.post('/upload', adminController.csvUpload);
+
+  app.post('/search', listController.searchListing);
 
   app.get('/register', function(req, res) { res.render('register'); });
 
@@ -50,6 +50,7 @@ module.exports = function(app) {
 
 function loggedIn(req, res, next) {
   if(req.session.user) {
+    loggedIn = true;
     next();
   } else {
     res.redirect('/login');

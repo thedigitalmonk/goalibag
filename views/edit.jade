@@ -1,9 +1,9 @@
 extends layout.jade
 block content
-    h1 Add a new Cottage
+    h1 Edit details for #{listing.name}
     .row
       .col-md-4
-        form(class="form" action = '/listing', method = 'post')
+        form(class="form" action = '/listing/#{listing._id}/edit', method = 'post')
           .form-group
             label Name
             input(type='text', name = 'name' class="form-control" value="#{listing.name}" required)
@@ -27,63 +27,58 @@ block content
             input(type='number', name = 'price_wknd' class="form-control" placeholder ="Price for Weekend (if applicable)" value="#{listing.price_wknd}")
           .form-group
             label Toilet Type:
-            select(name="menu_type" class="form-control" value="#{listing.toilet_type}")
-              option(value="Western") Western
-              option(value="Indian") Indian
-              option(value="Both") Both
+            select(name="toilet_type" class="form-control")
+              option(value="western" selected=listing.toilet_type === "western") Western
+              option(value="indian" selected=listing.toilet_type === "indian") Indian
           .form-group
             label Menu Type:
             select(name="menu_type" class="form-control")
-              option Veg
-              option Non-veg
-          .form-group
-            label Food Available: 
-            select(name="hasFood" class="form-control")
-              option(value="true") Yes
-              option(value="false") No
-          .form-group
-            label Wifi Available:
-            select(name="hasWifi" class="form-control")
-              option(value="true") Yes
-              option(value="false") No
-          .form-group
-            label AC room Available:
-            select(name="hasAC" class="form-control")
-              option(value="true") Yes
-              option(value="false") No
-          .form-group
-            label Pickup Available:
-            select(name="hasPickup" class="form-control")
-              option(value="true") Yes
-              option(value="false") No
-          .form-group
-            label Guide Available:
-              select(name="hasGuide" class="form-control")
-                option(value="true") Yes
-                option(value="false") No
-          .form-group
-            label Conference room Available:
-            select(name="hasConference" class="form-control")
-              option(value="true") Yes
-              option(value="false") No
-          .form-group
-            label Event facility?:
-            select(name="hasEvent" class="form-control")
-              option(value="true") Yes
-              option(value="false") No
-          .form-group
-            label Alcohol available:
-            select(name="hasAlcohol" class="form-control")
-              option(value="true") Yes
-              option(value="false") No
+              option(value="veg" selected=listing.menu_type === "veg") Veg
+              option(value="non-veg" selected=listing.menu_type === "non-veg") Non-veg
+              option(value="na" selected=listing.menu_type === "na") Not Applicable
+          .checkbox
+            label
+              input(type="checkbox" name="hasFood" checked=listing.hasFood)
+              span Food
+          .checkbox
+            label
+              input(type="checkbox" name="hasWifi" checked=listing.hasWifi)
+              span WiFi
+          .checkbox
+            label
+              input(type="checkbox" name="hasAC" checked=listing.hasAC)
+              span AC room
+          .checkbox
+            label
+              input(type="checkbox" name="hasPickup" checked=listing.hasPickup)
+              span Pickup
+          .checkbox
+            label
+              input(type="checkbox" name="hasGuide" checked=listing.hasGuide)
+              span Guide
+          .checkbox
+            label
+              input(type="checkbox" name="hasConference" checked=listing.hasConference)
+              span Conference Rooms
+          .checkbox
+            label
+              input(type="checkbox" name="hasEvent" checked=listing.hasEvent)
+              span Events
+          .checkbox
+            label
+              input(type="checkbox" name="hasAlcohol" checked=listing.hasAlcohol)
+              span Alcohol
           .form-group
             label Speciality
-            input(type='text', name = 'special' class="form-control" placeholder ="Speciality" value="#{listing.special}")
+            input(type='text', name = 'special' class="form-control" value="#{listing.special}")
           .form-group
-            label Other features
-            input(type='text', name = 'features' class="form-control" placeholder ="Other features" value="#{listing.features}")
+            label Description
+            input(type='text', name = 'description' class="form-control" value="#{listing.description}")
+          .form-group
+            label Attractions nearby
+            input(type='text', name = 'attractions' class="form-control" value="#{listing.attractions}")
           .form-group
             label Link to image
             input(type='text', name = 'image' class="form-control" placeholder ="link to image" value="#{listing.image}")
-           
-          input(type='submit' name="Update" class='btn btn-primary')
+
+          input(type='submit' name="Update" class='btn btn-primary' value="Update Listing")

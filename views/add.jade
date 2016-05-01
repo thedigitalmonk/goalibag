@@ -12,78 +12,74 @@ block content
             input(type='text', name = 'location' class="form-control" required)
           .form-group
             label Address
-            textarea(name = 'address' class="form-control" placeholder ="Address")
+            textarea(name = 'address' class="form-control")
           .form-group
             label Email address
-            input(type='email', name = 'email' class="form-control" placeholder ="Email")
+            input(type='email', name = 'email' class="form-control")
           .form-group
             label Contact no.
-            input(type='number', name = 'contact' class="form-control" placeholder ="Contact no." required)
+            input(type='number', name = 'contact' class="form-control" required)
           .form-group
             label Regular Price
-            input(type='number', name = 'price' class="form-control" placeholder ="Price" required)
+            input(type='number', name = 'price' class="form-control" required)
           .form-group
             label Weekend Price
-            input(type='number', name = 'price_wknd' class="form-control" placeholder ="Price for Weekend (if applicable)")
+            input(type='number', name = 'price_wknd' class="form-control")
           .form-group
             label Toilet Type:
             select(name="menu_type" class="form-control")
-              option(value="Western") Western
-              option(value="India") Indian
-              option(value="Both") Both
+              option(value="western") Western
+              option(value="indian") Indian
           .form-group
             label Menu Type:
             select(name="menu_type" class="form-control")
-              option Veg
-              option Non-veg
-          .form-group
-            label Food Available: 
-            select(name="hasFood" class="form-control")
-              option(value="true") Yes
-              option(value="false") No
-          .form-group
-            label Wifi Available:
-            select(name="hasWifi" class="form-control")
-              option(value="true") Yes
-              option(value="false") No
-          .form-group
-            label AC room Available:
-            select(name="hasAC" class="form-control")
-              option(value="true") Yes
-              option(value="false") No
-          .form-group
-            label Pickup Available:
-            select(name="hasPickup" class="form-control")
-              option(value="true") Yes
-              option(value="false") No
-          .form-group
-            label Guide Available:
-              select(name="hasGuide" class="form-control")
-                option(value="true") Yes
-                option(value="false") No
-          .form-group
-            label Conference room Available:
-            select(name="hasConference" class="form-control")
-              option(value="true") Yes
-              option(value="false") No
-          .form-group
-            label Event facility?:
-            select(name="hasEvent" class="form-control")
-              option(value="true") Yes
-              option(value="false") No
-          .form-group
-            label Alcohol available:
-            select(name="hasAlcohol" class="form-control")
-              option(value="true") Yes
-              option(value="false") No
+              option(value="veg") Veg
+              option(value="non-veg") Non-veg
+              option(value="na") Not applicable
+          p Please tick if available
+          .checkbox
+            label
+              input(type="checkbox" name="hasFood")
+              span Food
+          .checkbox
+            label
+              input(type="checkbox" name="hasWifi")
+              span WiFi
+          .checkbox
+            label
+              input(type="checkbox" name="hasAC")
+              span AC room
+          .checkbox
+            label
+              input(type="checkbox" name="hasPickup")
+              span Pickup
+          .checkbox
+            label
+              input(type="checkbox" name="hasGuide")
+              span Guide
+          .checkbox
+            label
+              input(type="checkbox" name="hasConference")
+              span Conference Rooms
+          .checkbox
+            label
+              input(type="checkbox" name="hasEvent")
+              span Events
+          .checkbox
+            label
+              input(type="checkbox" name="hasAlcohol")
+              span Alcohol
           .form-group
             label Speciality
-            input(type='text', name = 'special' class="form-control" placeholder ="Speciality")
+            input(type='text', name = 'special' class="form-control")
           .form-group
-            label Other features
-            input(type='text', name = 'features' class="form-control" placeholder ="Other features")
+            label Description
+            input(type='text', name = 'description' class="form-control")
+          .form-group
+            label Attractions nearby
+            input(type='text', name = 'attractions' class="form-control")
           .form-group
             label Link to image
-            input(type='text', name = 'image' class="form-control" placeholder ="link to image")
-           
-          input(type='submit' class='btn btn-primary')
+            input(type='text', name = 'image' class="form-control" placeholder ="http://link-to-image.com")
+
+          input(type='submit' value="Add Listing" class='btn btn-primary')

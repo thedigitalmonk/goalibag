@@ -1,18 +1,9 @@
 var listing = require('../models/Listing');
 var newListing;
 var session;
-// listing.find({}, function(err, listings) {
-//   if (err) throw err;
-//   console.log(listings);
-// });
-
-//console.log(listings);
 
 exports.getListings = function(req, res){
-  
-  if(req.session.user) loggedIn = true;
-  if(!req.session.user) loggedIn = false;
-  
+
   listing.find({}, function(err, listings) {
     if (err) throw err;
     res.render('list',{
@@ -20,6 +11,7 @@ exports.getListings = function(req, res){
       listings: listings
     });
   });
+
 };
 
 exports.addNewListing = function(req, res){
@@ -46,14 +38,9 @@ exports.editListing = function(req, res){
     res.render('edit', {
       pageTitle: 'Edit Listing',
       listing : listing
-    });  
+    });
   });
-  
-};
 
-exports.removeListing = function(req, res){
-  listing.findById(req.params.id).remove().exec();
-  res.redirect('/listing');
 };
 
 exports.addListing =  function(req, res){
@@ -77,35 +64,94 @@ exports.addListing =  function(req, res){
     hasAlcohol: req.body.hasAlcohol,
     special: req.body.special,
     location: req.body.location,
-    features: req.body.features,
+    description: req.body.description,
+    attractions: req.body.attractions,
     image: req.body.image
   });
   newListing.save(function(err) {
     if (err) throw err;
     console.log('Listing saved successfully!');
   });
-  res.redirect('/listing');
+  res.redirect('/');
 };
 
 exports.updateListing = function(req, res){
-    listings[req.params.index].name = req.body.name;
-    listings[req.params.index].price = req.body.price;
-    res.redirect("/listing");
+
+    listing.findById(req.params.id, function(err, listing) {
+
+      listing.name = req.body.name,
+      listing.price = req.body.price,
+      listing.address = req.body.address,
+      listing.email = req.body.email,
+      listing.contact = req.body.contact,
+      listing.price = req.body.price,
+      listing.price_wknd = req.body.price_wknd,
+      listing.menu_type = req.body.menu_type,
+      listing.toilet_type = req.body.toilet_type,
+      listing.hasFood = req.body.hasFood,
+      listing.hasWifi = req.body.hasWifi,
+      listing.hasAC = req.body.hasAC,
+      listing.hasPickup = req.body.hasPickup,
+      listing.hasGuide = req.body.hasGuide,
+      listing.hasConference = req.body.hasConference,
+      listing.hasEvent = req.body.hasEvent,
+      listing.hasAlcohol = req.body.hasAlcohol,
+      listing.special = req.body.special,
+      listing.location = req.body.location,
+      listing.description = req.body.description,
+      listing.attractions = req.body.attractions,
+      listing.image = req.body.image
+
+      listing.save(function(err) {
+        if (err) throw err;
+        console.log('Listing updated successfully!');
+      });
+    });
+
+    res.redirect('/');
+
 };
 
+
+
+
+
 exports.searchListing = function(req, res){
-    var keyword = req.body.keyword;
-    var Results = listings.filter(function(el){
-      return (el.name == keyword);
+    var budget = req.body.budget.split("-");
+    var query = {
+      location: req.body.location,
+      hasAC: req.body.hasAC,
+      hasWifi: req.body.hasWifi,
+      menu_type: req.body.menu_type
+    }
+    var querylog = JSON.stringify(query, null, 4);
+    listing.find(query).
+    where('price').gt(budget[0]).lt(budget[1]).
+    exec(function(err, listings) {
+      if(err) throw err;
+      res.render('results', {
+        listings : listings,
+        query: querylog
+      });
     });
-    res.render('results', {
-      results: Results
-    });
+};
+
+
+
+
+
+exports.removeListing = function(req, res){
+
+  listing.findById(req.params.id).remove().exec();
+  res.redirect('/');
+
 };
 
 exports.deleteAllListings = function(req, res) {
   listing.remove({}, function(err, success){
     if (err) throw err;
-    res.redirect("/listing");
+    res.render('dashboard', {
+      message: "Successfully deleted all listings."
+    });
   });
 }

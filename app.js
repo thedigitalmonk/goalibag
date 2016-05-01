@@ -5,7 +5,6 @@ var morgan   = require('morgan');
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
 var database = require('./config/database');
 var session = require('express-session');
-
 // configuration ===============================================================
 mongoose.connect(database.url);     // connect to mongoDB database on modulus.io
 
@@ -28,6 +27,6 @@ app.use(session({
 // routes ======================================================================
 require('./routes.js')(app);
 
-app.listen(80, function(){
-  console.log("Express Server at port 80");
+app.listen(4000, function(){
+  console.log("Express Server at port 4000");
 });

@@ -3,7 +3,8 @@ body,
 h1,
 h2,
 h3,
-h4 {
+h4,
+h5 {
   font-family: 'Open Sans', 'Arial' , 'Helvetica', sans-serif; }
 
 body {
@@ -12,6 +13,9 @@ body {
 
 strong, b {
   font-weight: 700; }
+
+address {
+  margin-bottom: 10px; }
 
 @font-face {
   font-family: "line-icons";
@@ -1935,7 +1939,20 @@ strong, b {
     margin-right: 6px;
     position: relative;
     top: 2px; }
+  .contact-list li {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px; }
 
-.prices {
+.prices .regular-price {
   font-weight: 700;
   font-size: 16px; }
+.prices .weekend-price {
+  margin-left: 10px; }
+
+.search-container {
+  padding: 15px;
+  background-color: #f5f5f5; }
+
+.bg {
+  padding: 15px; }

@@ -7,15 +7,14 @@ nav.navbar.navbar-default
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand(href='/') Goalibag
-    // Collect the nav links, forms, and other content for toggling
+      a.navbar-brand(href='/') GoAlibag
     .collapse.navbar-collapse
       ul.nav.navbar-nav
         if loggedIn
           li
             a(href='/listing/new') Add Listing
           li
-            a(href='/upload') Update Database
+            a(href='/dashboard') Dashboard
           li
             a(href='/logout') Logout
         else

@@ -1,10 +1,62 @@
 extends layout.jade
 block content
     h1 Hotels and Cottages in Alibag
-    
+    p!= message
+
     .row
       .col-md-3
-        h4 FILTERS
+        .search-container
+          h4 #[strong SEARCH]
+          form(class="form" action = '/search', method = 'post')
+            label Location
+            select(name="location" class="form-control")
+              option(value="Varsoli") Varsoli
+              option(value="Kurul") Kurul
+            hr
+            form-group
+              strong Budget per day
+              .radio
+                label
+                  input(type="radio" name="budget" value="0-1000")
+                  | 0-1000
+              .radio
+                label
+                  input(type="radio" name="budget" value="0-1500")
+                  | up to 1500
+              .radio
+                label
+                  input(type="radio" name="budget" value="0-2000")
+                  | up to 2000
+              .radio
+                label
+                  input(type="radio" name="budget" value="0-4000")
+                  | up to 4000
+              .radio
+                label
+                  input(type="radio" name="budget" value="0-100000" checked="true")
+                  | No limit
+            hr
+            .form-group
+              strong Room facilities
+              .checkbox
+                label
+                  input(type="checkbox" name="hasAC")
+                  | Air Conditioner
+              .checkbox
+                label
+                  input(type="checkbox" name="hasWifi")
+                  | WiFi Access
+            .form-group
+              label Food preferences:
+              select(name="menu_type" class="form-control")
+                option(value="veg") Veg
+                option(value="non-veg") Non-veg
+
+
+            input(type='submit' name="search" class='btn btn-primary' value="Search")
+
+
+
       .col-md-9
         each listing in listings
           .panel.panel-default
@@ -15,57 +67,60 @@ block content
                     img(src="#{listing.image}" class="media-object" width="240" height="240")
                   ul(class="contact-list")
                     if listing.email
-                      li 
+                      li
                         span(class="icon-chat-messages-15")
-                        span Email: #{listing.email}
+                        span #{listing.email}
                     if listing.contact
-                      li 
+                      li
                         span(class="icon-seo-icons-23")
                         span #{listing.contact}
                     if listing.offer
                       p #{listing.offer}
+                    if loggedIn
+                      p #[a(href="/listing/#{listing._id}/edit" class="btn btn-primary") #[span(class="glyphicon glyphicon-edit")] Edit] #[a(href="/listing/#{listing._id}/delete" class="btn btn-default") #[span(class="glyphicon glyphicon-trash")] Remove]
+
                 .media-body
                   h4.media-heading #{listing.name}
                   .location
-                    span(class="icon-seo-icons-34") 
+                    span(class="icon-seo-icons-34")
                     span #[strong Location:] #{listing.location}
-                  if listing.address
-                    .address #{listing.address}
                   hr
-                  if listing.features
-                    p Features: #{listing.features}
+                  if listing.address
+                    address Full Address: #{listing.address}
+                  if listing.description
+                    p #{listing.description}
                     hr
                   h4 Facilities
                   ul(class="row facilities")
                     if listing.hasAC
                       li(class="col-md-3")
                         .li-container
-                          span(class="icon-weather-14") 
+                          span(class="icon-weather-14")
                           span AC rooms
                     if listing.hasWifi
                       li(class="col-md-3")
                         .li-container
                           span(class="icon-socialmedia-20")
                           span Wifi
-                    if (listing.hasFood == 'true')
+                    if listing.hasFood=="true"
                       li(class="col-md-3")
                         .li-container
-                          span(class="icon-food-16") 
+                          span(class="icon-food-16")
                           span #{listing.menu_type} food
                     if listing.hasPickup
                       li(class="col-md-3")
                         .li-container
-                          span(class="icon-travel-transportation-09") 
+                          span(class="icon-travel-transportation-09")
                           span Pickup
                     if listing.hasGuide
                       li(class="col-md-3")
                         .li-container
-                          span 
-                          span Guide: #{listing.hasGuide}
+                          span(class="icon-faces-users-04")
+                          span City Guide
                     if listing.hasConference
                       li(class="col-md-3")
                         .li-container
-                          span(class="icon-multimedia-12") 
+                          span(class="icon-multimedia-12")
                           span Conference
                     if listing.hasEvent
                       li(class="col-md-3")
@@ -84,11 +139,12 @@ block content
                           span #{listing.toilet_type} Toilets
 
                   p(class="special") #[strong Special mention:] #{listing.special}
+                  if listing.attractions
+                    p Attractions nearby: #{listing.attractions}
 
+                  hr
 
-                  p(class="prices") ROOM TARIFF: ₹#{listing.price}/-
-                    
-                   if (listing.price != listing.price_wknd)
-                     p *Weekend tariff is ₹#{listing.price_wknd}/-
-                      
-                  p #[a(href="/listing/#{listing._id}/edit" class="glyphicon glyphicon-edit")] #[a(href="/listing/#{listing._id}/delete" class="glyphicon glyphicon-trash")]
+                  p(class="prices")
+                    span(class="regular-price") Room Tariff: ₹#{listing.price}/-
+                    if(listing.price != listing.price_wknd)
+                      span(class="weekend-price") *Weekend tariff is ₹#{listing.price_wknd}/-

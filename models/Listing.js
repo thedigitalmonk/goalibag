@@ -24,7 +24,8 @@ var listingSchema = new Schema({
   hasEvent: Boolean,
   hasAlcohol: Boolean,
   special: String,
-  features: String,
+  description: String,
+  attractions: String,
   image: String,
   created_at: Date,
   updated_at: Date
