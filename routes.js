@@ -27,6 +27,8 @@ module.exports = function(app) {
 
   app.post('/search/:location', listController.searchListingByLocation);
 
+  app.post('/upload-file', adminController.uploadImage);
+
 
 
   //Admin

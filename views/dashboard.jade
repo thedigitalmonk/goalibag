@@ -34,3 +34,10 @@ block content
           form(action='/upload', method = 'post' enctype='multipart/form-data' class="form-inline")
             input(type="file" name="database" class="form-control" required)
             input(type='submit' class='btn btn-primary' value="Add Listings")
+      .col-md-12
+        .col-md-6
+          h2 Image uploader
+          form(method='post' action='/upload-file' enctype='multipart/form-data' class='form-inline')
+            .form-group
+              input(type="file" name="image" class="form-control" required)
+            input(type='submit' class='btn btn-primary' value="Upload Image")
