@@ -27,7 +27,4 @@ app.locals.moment = require('moment');
 
 // routes ======================================================================
 require('./routes.js')(app);
-
-app.listen(80, function(){
-  console.log("Express Server at port 80");
-});
+require('./port.js')(app);
