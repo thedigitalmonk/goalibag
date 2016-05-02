@@ -37,7 +37,7 @@ block content
       .col-md-12
         .col-md-6
           h2 Image uploader
-          form(method='post' action='/upload-file' enctype='multipart/form-data' class='form-inline')
+          form(action='/upload-file', method = 'post' enctype='multipart/form-data' class="form-inline")
             .form-group
               input(type="file" name="image" class="form-control" required)
             input(type='submit' class='btn btn-primary' value="Upload Image")
