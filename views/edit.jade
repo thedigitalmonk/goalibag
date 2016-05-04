@@ -12,7 +12,7 @@ block content
             input(type='text', name = 'location' class="form-control" value="#{listing.location}" required)
           .form-group
             label Address
-            textarea(name = 'address' class="form-control" placeholder ="Address" value="#{listing.address}")
+            textarea(name = 'address' class="form-control" placeholder ="Address") #{listing.address}
           .form-group
             label Email address
             input(type='email', name = 'email' class="form-control" placeholder ="Email" value="#{listing.email}")
